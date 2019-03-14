@@ -1,0 +1,349 @@
+[gd_scene load_steps=22 format=1]
+
+[ext_resource path="res://Plateau.gd" type="Script" id=1]
+[ext_resource path="res://white.png" type="Texture" id=2]
+[ext_resource path="res://Interface_Pistolet.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Interface_Progression_Intrigue.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Interface_Couverture.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Bullogue.tscn" type="PackedScene" id=6]
+[ext_resource path="res://GlaDOS.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Big bell sound effect-K5lE0wTDdZc.smp" type="Sample" id=8]
+[ext_resource path="res://Grégoire Lourme - Memories-1292386.smp" type="Sample" id=9]
+[ext_resource path="res://Cervocoder - Saloon-204939.smp" type="Sample" id=10]
+[ext_resource path="res://Sim Band - The Saloon-639960.smp" type="Sample" id=11]
+[ext_resource path="res://Wind sound effect (2)-5n4sy1cSle8.smp" type="Sample" id=12]
+
+[sub_resource type="CanvasItemShader" id=1]
+
+_code = {
+"fragment": "/*
+vec2 nres = vec2(1.0/800.0, 1.0/600.0);
+vec2 center = vec2(0.5, 0.5);
+float r;
+if(TIME<(3.0-2.6)){
+	r = mod(3.0-TIME, 4.0) - 2.0;
+} else {
+	r = mod(2.6, 4.0) - 2.0;
+}
+if(mod(TIME,0.2)==0){
+	r = mod(2.7, 4.0) - 2.0;
+} else {
+	r = mod(2.6, 4.0) - 2.0;
+}
+float p = 0.01;
+
+vec2 diff = center - SCREEN_UV;
+float d = r - length(diff);
+vec2 dir = normalize(diff);
+vec2 uv = SCREEN_UV - dir * (p / (10.0*d*d + 0.1));
+
+vec3 col = texscreen(uv);
+COLOR.rgb = col;*/
+
+
+float y_max = 600;
+
+vec3 col;
+vec2 center = vec2(0.5, 0.5);
+vec2 diff = center - SCREEN_UV;
+vec2 uv = SCREEN_UV; // - normalize(diff) * 0.01;
+//col = texscreen(uv) * max(abs(center.x*uv.x),abs(center.y-uv.y)) * 10/TIME;
+col = texscreen(uv) * uv.y *1.5;
+COLOR.rgb = col;",
+"fragment_ofs": 0,
+"light": "",
+"light_ofs": 0,
+"vertex": "",
+"vertex_ofs": 0
+}
+
+[sub_resource type="CanvasItemMaterial" id=2]
+
+shader/shader = SubResource( 1 )
+shader/shading_mode = 0
+
+[sub_resource type="CanvasItemShader" id=3]
+
+_code = {
+"fragment": "/*
+vec2 nres = vec2(1.0/800.0, 1.0/600.0);
+vec2 center = vec2(0.5, 0.5);
+float r;
+if(TIME<(3.0-2.6)){
+	r = mod(3.0-TIME, 4.0) - 2.0;
+} else {
+	r = mod(2.6, 4.0) - 2.0;
+}
+if(mod(TIME,0.2)==0){
+	r = mod(2.7, 4.0) - 2.0;
+} else {
+	r = mod(2.6, 4.0) - 2.0;
+}
+float p = 0.01;
+
+vec2 diff = center - SCREEN_UV;
+float d = r - length(diff);
+vec2 dir = normalize(diff);
+vec2 uv = SCREEN_UV - dir * (p / (10.0*d*d + 0.1));
+
+vec3 col = texscreen(uv);
+COLOR.rgb = col;*/
+
+
+float y_max = 600;
+
+vec3 col;
+vec2 center = vec2(0.5, 0.5);
+vec2 diff = center - SCREEN_UV;
+vec2 uv = SCREEN_UV; // - normalize(diff) * 0.01;
+//col = texscreen(uv) * max(abs(center.x*uv.x),abs(center.y-uv.y)) * 10/TIME;
+if(abs(uv.y-center.y)>0.2){
+	col = texscreen(uv) * 1/abs(uv.y-center.y) * 0.2;
+}else{
+	col = texscreen(uv);
+}
+COLOR.rgb = col;",
+"fragment_ofs": 0,
+"light": "",
+"light_ofs": 0,
+"vertex": "",
+"vertex_ofs": 0
+}
+
+[sub_resource type="CanvasItemMaterial" id=4]
+
+shader/shader = SubResource( 3 )
+shader/shading_mode = 0
+
+[sub_resource type="CanvasItemShader" id=5]
+
+_code = {
+"fragment": "/*
+vec2 nres = vec2(1.0/800.0, 1.0/600.0);
+vec2 center = vec2(0.5, 0.5);
+float r;
+if(TIME<(3.0-2.6)){
+	r = mod(3.0-TIME, 4.0) - 2.0;
+} else {
+	r = mod(2.6, 4.0) - 2.0;
+}
+if(mod(TIME,0.2)==0){
+	r = mod(2.7, 4.0) - 2.0;
+} else {
+	r = mod(2.6, 4.0) - 2.0;
+}
+float p = 0.01;
+
+vec2 diff = center - SCREEN_UV;
+float d = r - length(diff);
+vec2 dir = normalize(diff);
+vec2 uv = SCREEN_UV - dir * (p / (10.0*d*d + 0.1));
+
+vec3 col = texscreen(uv);
+COLOR.rgb = col;*/
+
+
+float y_max = 600;
+
+vec3 col;
+vec2 center = vec2(0.5, 0.5);
+vec2 diff = center - SCREEN_UV;
+vec2 uv = SCREEN_UV; // - normalize(diff) * 0.01;
+//col = texscreen(uv) * max(abs(center.x*uv.x),abs(center.y-uv.y)) * 10/TIME;
+col = texscreen(uv);
+col.r = uv.x*sin(TIME)*abs(uv.y-center.y) * 5;
+COLOR.rgb = col;",
+"fragment_ofs": 0,
+"light": "",
+"light_ofs": 0,
+"vertex": "",
+"vertex_ofs": 0
+}
+
+[sub_resource type="CanvasItemMaterial" id=6]
+
+shader/shader = SubResource( 5 )
+shader/shading_mode = 0
+
+[sub_resource type="CanvasItemShader" id=7]
+
+_code = {
+"fragment": "vec3 col;
+vec2 center = vec2(0.5, 0.5);
+vec2 diff = center - SCREEN_UV;
+vec2 uv = SCREEN_UV; // - normalize(diff) * 0.01;
+//col = texscreen(uv) * max(abs(center.x*uv.x),abs(center.y-uv.y)) * 10/TIME;
+if(abs(uv.x-center.x)>0.2){
+	col = texscreen(uv) * 1/abs(uv.x-center.x) * 0.2;
+}else{
+	col = texscreen(uv);
+}
+COLOR.rgb = col;",
+"fragment_ofs": 0,
+"light": "",
+"light_ofs": 0,
+"vertex": "",
+"vertex_ofs": 0
+}
+
+[sub_resource type="CanvasItemMaterial" id=8]
+
+shader/shader = SubResource( 7 )
+shader/shading_mode = 0
+
+[sub_resource type="SampleLibrary" id=9]
+
+samples/Cloche = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 8 )
+}
+samples/Reve = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 9 )
+}
+samples/Saloon1 = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 10 )
+}
+samples/Saloon2 = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 11 )
+}
+samples/Vent = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 12 )
+}
+
+[node name="Plateau" type="Control"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 0.0
+margin/bottom = 0.0
+script/script = ExtResource( 1 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+
+[node name="Coucher_Soleil" type="TextureFrame" parent="CanvasLayer"]
+
+visibility/visible = false
+material/material = SubResource( 2 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 800.0
+margin/bottom = 600.0
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 0
+
+[node name="Intimider" type="TextureFrame" parent="CanvasLayer"]
+
+visibility/visible = false
+material/material = SubResource( 4 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 800.0
+margin/bottom = 600.0
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 0
+
+[node name="Reve" type="TextureFrame" parent="CanvasLayer"]
+
+visibility/visible = false
+material/material = SubResource( 6 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 800.0
+margin/bottom = 600.0
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 0
+
+[node name="Ralenti" type="TextureFrame" parent="CanvasLayer"]
+
+visibility/visible = false
+material/material = SubResource( 8 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 800.0
+margin/bottom = 600.0
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 0
+
+[node name="Interface_Pistolet" parent="CanvasLayer" instance=ExtResource( 3 )]
+
+margin/left = 111.0
+margin/top = 544.0
+margin/right = 151.0
+margin/bottom = 584.0
+
+[node name="Interface_Progression_Intrigue" parent="CanvasLayer" instance=ExtResource( 4 )]
+
+visibility/visible = false
+margin/left = 28.0
+margin/top = 25.0
+margin/right = 68.0
+margin/bottom = 65.0
+
+[node name="Interface_Couverture" parent="CanvasLayer" instance=ExtResource( 5 )]
+
+margin/left = 622.0
+margin/top = 3.0
+margin/right = 662.0
+margin/bottom = 43.0
+
+[node name="Bullogue" parent="." instance=ExtResource( 6 )]
+
+visibility/visible = false
+
+[node name="GlaDOS" parent="." instance=ExtResource( 7 )]
+
+[node name="SamplePlayer2D" type="SamplePlayer2D" parent="."]
+
+params/volume_db = -10.0
+params/pitch_scale = 1.0
+params/attenuation/min_distance = 1.0
+params/attenuation/max_distance = 2048.0
+params/attenuation/distance_exp = 1.0
+config/polyphony = 2
+config/samples = SubResource( 9 )
+config/pitch_random = 0.0
+
+

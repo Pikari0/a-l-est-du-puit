@@ -1,0 +1,99 @@
+[gd_scene load_steps=5 format=1]
+
+[ext_resource path="res://Selection_Sexe.gd" type="Script" id=1]
+[ext_resource path="res://clint.png" type="Texture" id=2]
+[ext_resource path="res://dolores.png" type="Texture" id=3]
+[ext_resource path="res://ubuntu_test.fnt" type="BitmapFont" id=4]
+
+[node name="Selection_Sexe" type="Node2D"]
+
+script/script = ExtResource( 1 )
+
+[node name="Homme" type="Sprite" parent="."]
+
+transform/pos = Vector2( 233.845, 423.583 )
+transform/scale = Vector2( 5, 5 )
+texture = ExtResource( 2 )
+vframes = 4
+hframes = 4
+
+[node name="Femme" type="Sprite" parent="."]
+
+transform/pos = Vector2( 550.954, 420.357 )
+transform/scale = Vector2( 5, 5 )
+texture = ExtResource( 3 )
+vframes = 4
+hframes = 4
+
+[node name="Label" type="Label" parent="."]
+
+rect/scale = Vector2( 3, 3 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 39.0
+margin/top = 153.0
+margin/right = 279.0
+margin/bottom = 167.0
+custom_fonts/font = ExtResource( 4 )
+text = "Selectionnez votre personnage."
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+transform/pos = Vector2( 399.887, 299.915 )
+anchor_mode = 1
+rotating = false
+current = true
+zoom = Vector2( 1, 1 )
+limit/left = -10000000
+limit/top = -10000000
+limit/right = 10000000
+limit/bottom = 10000000
+drag_margin/h_enabled = true
+drag_margin/v_enabled = true
+smoothing/enable = false
+smoothing/speed = 5.0
+drag_margin/left = 0.2
+drag_margin/top = 0.2
+drag_margin/right = 0.2
+drag_margin/bottom = 0.2
+
+[node name="D" type="Label" parent="."]
+
+rect/scale = Vector2( 4, 4 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 218.0
+margin/top = 529.0
+margin/right = 258.0
+margin/bottom = 543.0
+custom_fonts/font = ExtResource( 4 )
+text = "D"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Q" type="Label" parent="."]
+
+rect/scale = Vector2( 4, 4 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 540.0
+margin/top = 530.0
+margin/right = 580.0
+margin/bottom = 544.0
+custom_fonts/font = ExtResource( 4 )
+text = "Q"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+

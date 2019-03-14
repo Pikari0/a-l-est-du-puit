@@ -1,0 +1,120 @@
+[gd_scene load_steps=6 format=1]
+
+[ext_resource path="res://Table_Saloon.gd" type="Script" id=1]
+[ext_resource path="res://mobilier.png" type="Texture" id=2]
+[ext_resource path="res://cartes.png" type="Texture" id=3]
+
+[sub_resource type="CapsuleShape2D" id=1]
+
+custom_solver_bias = 0.0
+radius = 18.0
+height = 25.8609
+
+[sub_resource type="Animation" id=2]
+
+resource/name = "Cartes"
+length = 5.0
+loop = true
+step = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Cartes:visibility/visible")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Cartes:frame")
+tracks/1/interp = 1
+tracks/1/imported = false
+tracks/1/keys = {
+"times": FloatArray( 0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5 ),
+"transitions": FloatArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 4, 3, 2, 1 ]
+}
+
+[node name="Table_Saloon" type="StaticBody2D"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( -1.76927e-08, -0.404762, 0.570173, -2.49231e-08, 0, -2 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+script/script = ExtResource( 1 )
+
+[node name="Siege1" type="Sprite" parent="."]
+
+transform/pos = Vector2( 0, -14 )
+texture = ExtResource( 2 )
+vframes = 2
+hframes = 2
+frame = 1
+
+[node name="Siege2" type="Sprite" parent="."]
+
+transform/pos = Vector2( -20, 0 )
+texture = ExtResource( 2 )
+vframes = 2
+hframes = 2
+frame = 1
+
+[node name="Siege3" type="Sprite" parent="."]
+
+transform/pos = Vector2( 18, 0 )
+texture = ExtResource( 2 )
+vframes = 2
+hframes = 2
+frame = 1
+
+[node name="Siege4" type="Sprite" parent="."]
+
+transform/pos = Vector2( 0, 12 )
+texture = ExtResource( 2 )
+vframes = 2
+hframes = 2
+frame = 1
+
+[node name="Table" type="Sprite" parent="."]
+
+texture = ExtResource( 2 )
+vframes = 2
+hframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+transform/pos = Vector2( 0, -2 )
+transform/rot = 90.0
+transform/scale = Vector2( 0.404762, 0.570173 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Cartes" type="Sprite" parent="."]
+
+visibility/visible = false
+texture = ExtResource( 3 )
+vframes = 3
+hframes = 2
+frame = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/Cartes = SubResource( 2 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = ""
+
+

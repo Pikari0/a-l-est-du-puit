@@ -1,0 +1,140 @@
+[gd_scene load_steps=9 format=1]
+
+[ext_resource path="res://Batiment.gd" type="Script" id=1]
+[ext_resource path="res://batiment.png" type="Texture" id=2]
+[ext_resource path="res://enseignes.png" type="Texture" id=3]
+[ext_resource path="res://fenetres.png" type="Texture" id=4]
+[ext_resource path="res://reflets_fenetres.png" type="Texture" id=5]
+
+[sub_resource type="ConvexPolygonShape2D" id=1]
+
+custom_solver_bias = 0.0
+points = Vector2Array( -28.8497, 9.57495, 50, 8, 50, 62, -27.3897, 63.009 )
+
+[sub_resource type="ConvexPolygonShape2D" id=2]
+
+custom_solver_bias = 0.0
+points = Vector2Array( -30.04, 63.9263, -37.9307, 63.8585, -34.7135, 62.7071 )
+
+[sub_resource type="ConvexPolygonShape2D" id=3]
+
+custom_solver_bias = 0.0
+points = Vector2Array( -30.04, 63.9263, -34.7135, 62.7071, -30.1755, 61.0138 )
+
+[node name="Batiment" type="StaticBody2D"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+script/script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+
+texture = ExtResource( 2 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+
+build_mode = 0
+polygon = Vector2Array( -27.3897, 63.009, 50, 62, 50, 8, -28.8497, 9.57495 )
+shape_range = Vector2( 0, 0 )
+trigger = false
+
+[node name="Porte" type="StaticBody2D" parent="."]
+
+input/pickable = false
+shapes/0/shape = SubResource( 2 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+shapes/1/shape = SubResource( 3 )
+shapes/1/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/1/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Porte"]
+
+build_mode = 0
+polygon = Vector2Array( -37.9307, 63.8585, -34.7135, 62.7071, -30.1755, 61.0138, -30.04, 63.9263 )
+shape_range = Vector2( 0, 1 )
+trigger = false
+
+[node name="Enseigne" type="Sprite" parent="."]
+
+transform/pos = Vector2( -42, 38 )
+texture = ExtResource( 3 )
+vframes = 3
+hframes = 3
+frame = 5
+
+[node name="Fenetres" type="Node2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="Fenetres"]
+
+transform/pos = Vector2( -8, 20 )
+texture = ExtResource( 4 )
+vframes = 2
+hframes = 2
+
+[node name="Sprite1" type="Sprite" parent="Fenetres"]
+
+transform/pos = Vector2( 28, 20 )
+texture = ExtResource( 4 )
+vframes = 2
+hframes = 2
+
+[node name="Sprite2" type="Sprite" parent="Fenetres"]
+
+transform/pos = Vector2( -8, 52 )
+texture = ExtResource( 4 )
+vframes = 2
+hframes = 2
+
+[node name="Sprite3" type="Sprite" parent="Fenetres"]
+
+transform/pos = Vector2( 28, 52 )
+texture = ExtResource( 4 )
+vframes = 2
+hframes = 2
+
+[node name="Reflets" type="Node2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="Reflets"]
+
+transform/pos = Vector2( -8, 20 )
+texture = ExtResource( 5 )
+vframes = 2
+hframes = 2
+
+[node name="Sprite1" type="Sprite" parent="Reflets"]
+
+transform/pos = Vector2( 28, 20 )
+texture = ExtResource( 5 )
+vframes = 2
+hframes = 2
+
+[node name="Sprite2" type="Sprite" parent="Reflets"]
+
+transform/pos = Vector2( -8, 52 )
+texture = ExtResource( 5 )
+vframes = 2
+hframes = 2
+
+[node name="Sprite3" type="Sprite" parent="Reflets"]
+
+transform/pos = Vector2( 28, 52 )
+texture = ExtResource( 5 )
+vframes = 2
+hframes = 2
+
+

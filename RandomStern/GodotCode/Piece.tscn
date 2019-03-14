@@ -1,0 +1,133 @@
+[gd_scene load_steps=6 format=1]
+
+[ext_resource path="res://Piece.gd" type="Script" id=1]
+[ext_resource path="res://decor_piece.png" type="Texture" id=2]
+[ext_resource path="res://piece.png" type="Texture" id=3]
+
+[sub_resource type="Animation" id=2]
+
+resource/name = "sol"
+length = 3.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Decor_Sol:transform/pos")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 0.2, 0.4, 0.6, 0.8 ),
+"transitions": FloatArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 80 ), Vector2( 0, 60 ), Vector2( 0, 40 ), Vector2( 0, 20 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:transform/pos")
+tracks/1/interp = 1
+tracks/1/imported = false
+tracks/1/keys = {
+"times": FloatArray( 1, 2.2, 2.4 ),
+"transitions": FloatArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 10 ), Vector2( 0, 15 ), Vector2( 0, 20 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:frame")
+tracks/2/interp = 1
+tracks/2/imported = false
+tracks/2/keys = {
+"times": FloatArray( 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2 ),
+"transitions": FloatArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 3, 1, 3, 1, 3, 1, 2 ]
+}
+
+[sub_resource type="Animation" id=1]
+
+resource/name = "tombe"
+length = 0.8
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": FloatArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Decor_Chute:frame")
+tracks/1/interp = 1
+tracks/1/imported = false
+tracks/1/keys = {
+"times": FloatArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": FloatArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 1 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Decor_Sol:transform/pos")
+tracks/2/interp = 1
+tracks/2/imported = false
+tracks/2/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 80 ) ]
+}
+
+[node name="Piece" type="Control"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 0.0
+margin/bottom = 0.0
+script/script = ExtResource( 1 )
+
+[node name="Decor_Chute" type="Sprite" parent="."]
+
+transform/pos = Vector2( -0.0756638, -0.251867 )
+transform/scale = Vector2( 1.4559, 2.55794 )
+texture = ExtResource( 2 )
+vframes = 2
+hframes = 2
+frame = 2
+
+[node name="Decor_Sol" type="Sprite" parent="."]
+
+transform/scale = Vector2( 1.4559, 2.55794 )
+texture = ExtResource( 2 )
+vframes = 2
+hframes = 2
+frame = 3
+
+[node name="Sprite" type="Sprite" parent="."]
+
+transform/pos = Vector2( 0, 20 )
+texture = ExtResource( 3 )
+vframes = 2
+hframes = 2
+frame = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/sol = SubResource( 2 )
+anims/tombe = SubResource( 1 )
+next/tombe = "sol"
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = ""
+
+[connection signal="finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_finished"]
+
+

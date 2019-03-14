@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://Interface_Progression_Intrigue.gd" type="Script" id=1]
+[ext_resource path="res://interface_progression_intrigue_v2.png" type="Texture" id=2]
+
+[node name="Interface_Progression_Intrigue" type="Control"]
+
+rect/scale = Vector2( 2, 2 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 40.0
+margin/bottom = 40.0
+script/script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+
+transform/pos = Vector2( 15, 25 )
+texture = ExtResource( 2 )
+vframes = 2
+hframes = 2
+frame = 1
+
+[node name="Icone_Bandit" type="KinematicBody2D" parent="."]
+
+input/pickable = false
+collision/layers = 1
+collision/mask = 1
+collision/margin = 0.08
+
+[node name="Sprite" type="Sprite" parent="Icone_Bandit"]
+
+transform/pos = Vector2( 3, 6 )
+texture = ExtResource( 2 )
+vframes = 2
+hframes = 2
+
+
